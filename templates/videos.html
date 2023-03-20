@@ -1,0 +1,636 @@
+{% extends 'homepage.html'%}
+{% load static %}
+{% block content %}
+    
+
+
+    <div id="wrapper">
+
+       {% include 'includes/header.html'%}
+       {% include 'includes/sidebar.html'%}
+
+
+        <!-- Main Contents -->
+        <div class="main_content">
+            <div class="mcontainer">
+
+
+                <div class="flex justify-between relative md:mb-4 mb-3">
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-semibold"> Видео </h2>
+                        <nav class="responsive-nav border-b md:m-0 -mx-4">
+                            <ul>
+                                <li class="active"><a href="#" class="lg:px-2">  предложения
+                                     </a></li>
+                                <li><a href="#" class="lg:px-2"> Новости </a></li>
+                                <li><a href="#" class="lg:px-2"> Видео мои </a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <a href="#create-post-modal" uk-toggle class="flex items-center justify-center h-9 lg:px-5 px-2 rounded-md bg-blue-600 text-white space-x-1.5 absolute right-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="md:block hidden"> Создовать </span>
+                    </a> 
+                </div>
+
+                <!-- Vide slider -->
+
+                <div class="relative" uk-slider="finite: true">
+                    
+                    <div class="uk-slider-container px-1 py-3">
+                        <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid">
+                            {% for video in videos %}
+                            <li>
+                                <a href="#" class="w-full md:h-36 h-28 overflow-hidden rounded-lg relative block">
+                                    <img src="{{video.poster.url}}" alt="" class="w-full h-full absolute inset-0 object-cover">
+                                    <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                                    <img src="{% static 'assets/images/icon-play.svg'%}" class="w-12 h-12 uk-position-center" alt="">
+                                </a>
+                                <div class="pt-3">
+                                    <a href="#" class="font-semibold line-clamp-2"> {{video.title}}</a>
+                                    <div class="pt-2">
+                                        <a href="#"  class="text-sm">  {{video.user.username}}  </a>
+                                        <div class="flex space-x-2 items-center text-sm mt-1">
+                                            <div> {{video.time_of}}</div>
+                                            <div class="md:block hidden">·</div>
+                                            <div> 156.9K views</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+    
+                        <a class="absolute bg-white top-16 flex items-center justify-center p-2 -left-4 rounded-full shadow-md text-xl w-9 z-10 dark:bg-gray-800 dark:text-white" href="#" uk-slider-item="previous"> <i class="icon-feather-chevron-left"></i></a>
+                        <a class="absolute bg-white top-16 flex items-center justify-center p-2 -right-4 rounded-full shadow-md text-xl w-9 z-10 dark:bg-gray-800 dark:text-white" href="#" uk-slider-item="next"> <i class="icon-feather-chevron-right"></i></a>
+
+                    </div>
+                </div>
+
+                <br>  
+
+                <div class="md:mb-4 mb-3">
+                    <h2 class="text-2xl font-semibold"> Your videos </h2>
+                    <nav class="responsive-nav border-b md:m-0 -mx-4">
+                        <ul>
+                            <li class="active"><a href="#" class="lg:px-2">   Suggestions </a></li>
+                            <li><a href="#" class="lg:px-2"> Newest </a></li>
+                            <li><a href="#" class="lg:px-2"> My videos </a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!--  videos  list -->
+
+                <div class="divide-y">
+
+                    <div class="flex md:space-x-6 space-x-4 md:py-5 py-3 relative">
+                        <a href="video-watch.html" class="md:w-64 md:h-40 w-36 h-24 overflow-hidden rounded-lg relative shadow-sm"> 
+                             <img src="assets/images/video/img-3.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                             <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                            <img src="assets/images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                        </a>
+                        <div class="flex-1 space-y-2"> 
+                             
+                            <a href="video-watch.html" class="md:text-xl font-semibold line-clamp-2">   Exploring an Abandoned Water Park in China  </a>
+                            <p class="leading-6 pr-4 line-clamp-2 md:block hidden"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna . </p>
+                            <a href="#" class="font-semibold block text-sm"> Stalla Johani</a>
+                           
+                           <div class="flex items-center justify-between">
+                                <div class="flex space-x-3 items-center text-sm md:pt-3">
+                                    <div> 27 weeks ago</div>
+                                    <div class="md:block hidden">·</div>
+                                    <div> 156.9K views</div>
+                                </div>
+                                <a href="#" class="md:flex items-center justify-center h-9 px-8 rounded-md border hidden"> Add favorites </a>
+                            </div>
+
+                            <div class="absolute top-1 right-0 md:inline hidden">
+                                <a href="#" class="hover:bg-gray-200 p-1.5 inline-block rounded-full" aria-expanded="false"> 
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+                                 </svg>
+                                </a>
+                                <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700 uk-drop uk-drop-bottom-right" uk-drop="mode: hover;pos: top-right" style="left: -188px; top: -12px;">
+                          
+                                    <ul class="space-y-1">
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                           <i class="uil-share-alt mr-1"></i> Share
+                                          </a> 
+                                      </li>
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                           <i class="uil-edit-alt mr-1"></i>  Edit Post 
+                                          </a> 
+                                      </li>
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                           <i class="uil-comment-slash mr-1"></i>   Disable comments
+                                          </a> 
+                                      </li> 
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                           <i class="uil-favorite mr-1"></i>  Add favorites 
+                                          </a> 
+                                      </li>
+                                      <li>
+                                        <hr class="-mx-2 my-2 dark:border-gray-800">
+                                      </li>
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md dark:hover:bg-red-600">
+                                           <i class="uil-trash-alt mr-1"></i>  Delete
+                                          </a> 
+                                      </li>
+                                    </ul>
+                                
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> 
+                    <div class="flex md:space-x-6 space-x-4 md:py-5 py-3 relative">
+                        <div class="md:w-64 md:h-40 w-36 h-24 overflow-hidden rounded-lg relative shadow-sm"> 
+                             <img src="assets/images/video/img-1.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                             <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                             <img src="assets/images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                        </div>
+                        <div class="flex-1 space-y-2"> 
+                             
+                            <a href="video-watch.html" class="md:text-xl font-semibold line-clamp-2">  Amazing House Construction From Foundation To Last Detail  </a>
+                            <p class="leading-6 pr-4 line-clamp-2 md:block hidden"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna . </p>
+                            <a href="#" class="font-semibold block text-sm"> Stalla Johani</a>
+                           
+                           <div class="flex items-center justify-between">
+                                <div class="flex space-x-3 items-center text-sm md:pt-3">
+                                    <div> 27 weeks ago</div>
+                                    <div class="md:block hidden">·</div>
+                                    <div> 156.9K views</div>
+                                </div>
+                                <a href="#" class="md:flex items-center justify-center h-9 px-8 rounded-md border hidden"> Add favorites </a>
+                            </div>
+
+                            <div class="absolute top-1 right-0 md:inline hidden">
+                                <a href="#" class="hover:bg-gray-200 p-1.5 inline-block rounded-full" aria-expanded="false"> 
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+                                 </svg>
+                                </a>
+                                <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700 uk-drop uk-drop-bottom-right" uk-drop="mode: hover;pos: top-right" style="left: -188px; top: -12px;">
+                          
+                                    <ul class="space-y-1">
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                           <i class="uil-share-alt mr-1"></i> Share
+                                          </a> 
+                                      </li>
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                           <i class="uil-edit-alt mr-1"></i>  Edit Post 
+                                          </a> 
+                                      </li>
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                           <i class="uil-comment-slash mr-1"></i>   Disable comments
+                                          </a> 
+                                      </li> 
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                           <i class="uil-favorite mr-1"></i>  Add favorites 
+                                          </a> 
+                                      </li>
+                                      <li>
+                                        <hr class="-mx-2 my-2 dark:border-gray-800">
+                                      </li>
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md dark:hover:bg-red-600">
+                                           <i class="uil-trash-alt mr-1"></i>  Delete
+                                          </a> 
+                                      </li>
+                                    </ul>
+                                
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> 
+                    <div class="flex md:space-x-6 space-x-4 md:py-5 py-3 relative">
+                        <a href="video-watch.html" class="md:w-64 md:h-40 w-36 h-24 overflow-hidden rounded-lg relative shadow-sm"> 
+                             <img src="assets/images/video/img-4.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                             <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                             <img src="assets/images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                        </a>
+                        <div class="flex-1 space-y-2"> 
+                             
+                            <a href="video-watch.html" class="md:text-xl font-semibold line-clamp-2">   Cheesecake Eggless & Without oven｜HidaMari Cooking  </a>
+                            <p class="leading-6 pr-4 line-clamp-2 md:block hidden"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna . </p>
+                            <a href="#" class="font-semibold block text-sm"> Stalla Johani</a>
+                           
+                           <div class="flex items-center justify-between">
+                                <div class="flex space-x-3 items-center text-sm md:pt-3">
+                                    <div> 27 weeks ago</div>
+                                    <div class="md:block hidden">·</div>
+                                    <div> 156.9K views</div>
+                                </div>
+                                <a href="#" class="md:flex items-center justify-center h-9 px-8 rounded-md border hidden"> Add favorites </a>
+                            </div>
+
+                            <div class="absolute top-1 right-0 md:inline hidden">
+                                <a href="#" class="hover:bg-gray-200 p-1.5 inline-block rounded-full" aria-expanded="false"> 
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+                                 </svg>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div> 
+                    <div class="flex md:space-x-6 space-x-4 md:py-5 py-3 relative">
+                        <a href="video-watch.html" class="md:w-64 md:h-40 w-36 h-24 overflow-hidden rounded-lg relative shadow-sm"> 
+                             <img src="assets/images/video/img-5.png" alt="" class="w-full h-full absolute inset-0 object-cover">
+                             <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 right-1 rounded text-white text-xs"> 12:21</span>
+                             <img src="assets/images/icon-play.svg" class="w-12 h-12 uk-position-center" alt="">
+                        </a>
+                        <div class="flex-1 space-y-2"> 
+                             
+                            <a href="video-watch.html" class="md:text-xl font-semibold line-clamp-2">    Amazing Little Girl Has Very Talent Voice Vocal Coach     </a>
+                            <p class="leading-6 pr-4 line-clamp-2 md:block hidden"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna . </p>
+                            <a href="#" class="font-semibold block text-sm"> Stalla Johani</a>
+                           
+                           <div class="flex items-center justify-between">
+                                <div class="flex space-x-3 items-center text-sm md:pt-3">
+                                    <div> 27 weeks ago</div>
+                                    <div class="md:block hidden">·</div>
+                                    <div> 156.9K views</div>
+                                </div>
+                                <a href="#" class="md:flex items-center justify-center h-9 px-8 rounded-md border hidden"> Add favorites </a>
+                            </div>
+
+                            <div class="absolute top-1 right-0 md:inline hidden">
+                                <a href="#" class="hover:bg-gray-200 p-1.5 inline-block rounded-full" aria-expanded="false"> 
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+                                 </svg>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div> 
+
+                </div> 
+        
+            </div>
+        </div>
+        
+    </div>
+
+    
+    <!-- Craete video post modal -->
+    <div id="create-post-modal" class="create-post" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical shadow-2xl uk-animation-slide-bottom-small">
+  
+          <div class="py-4 border-b flex  justify-between px-6">
+              <h3 class="text-lg font-semibold"> Create Video </h3>
+              <div>
+                  <div class="font-semibold px-2.5 py-1 bg-gray-100  rounded-md text text-gray-500 text-sm mr-8">
+                      Saved as draft
+                  </div>
+                  <button class="uk-modal-close-default hover:bg-gray-100 rounded-full p-2.5 block uk-icon uk-close mt-0.5"
+                      type="button" uk-close>
+                      <i class="icon-feather-close"></i>
+                  </button>
+              </div>
+          </div>
+  
+  
+          <div class="create-post-modal-body space-x-6 p-5 overflow-x-hidden mr-1" data-simplebar>
+  
+              <form action="" class="space-y-4 g:w-8/12">
+                  <div class="relative uk-transition-toggle overflow-hidden">
+                      <div
+                          class="bg-gray-100 border-2 border-dashed flex flex-col h-40 items-center justify-center relative w-full rounded-lg dark:bg-gray-800 dark:border-gray-600">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-12">
+                              <path
+                                  d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z" />
+                              <path d="M9 13h2v5a1 1 0 11-2 0v-5z" />
+                          </svg>
+                      </div>
+                      <div class="w-full" uk-form-custom>
+                          <input type="file">
+                          <a href="#"
+                              class="bg-gray-200 flex font-medium h-9 items-center justify-center px-5 rounded-b-xl text-blue-600 text-white uk-position-bottom uk-transition-bottom-small">
+                              Choose file</a>
+                      </div>
+                  </div>
+  
+                  <div class="font-semibold text-lg"> Details </div>
+                  <div class="border focus-within:bg-white focus-within:border-blue-300 p-3 pb-0 rounded-md">
+                      <label for="" class="mb-0 ml-2 text-gray-600 text-sm"> Title (required)</label>
+                      <input type="text" placeholder="Name"
+                          class="-mt-2 -mx-3 bg-transparent focus:bg-white focus:ring-gray-300 h-8 outline-none px-0 text-base w-full">
+                  </div>
+                  <div class="border focus-within:bg-white focus-within:border-blue-300 p-3 rounded-md">
+                      <label for="" class="mb-0 ml-2 text-gray-600 text-sm"> Description (required)</label>
+                      <textarea type="text" rows="5" placeholder="What's Your Mind ? Stella!"
+                          class="bg-transparent focus:bg-white focus:ring-gray-300 focus:shadow-none outline-none p-2 resize-none shadow-none text-base w-full"></textarea>
+                  </div>
+                  <div class="keywords-container">
+                      <div class="keyword-input-container shadow-none">
+                          <input type="text" class="keyword-input with-border" placeholder="Add Keywords" />
+                          <button type="button" class="keyword-input-button ripple-effect">
+                              <i class="icon-feather-plus"></i></button>
+                      </div>
+                      <div class="keywords-list">
+                          <span class="keyword">
+                              <span class="keyword-remove">Javascript</span> <span class="keyword-text"></span>
+                          </span>
+                          <span class="keyword">
+                              <span class="keyword-remove">Node</span> <span class="keyword-text"></span>
+                          </span>
+                          <span class="keyword">
+                              <span class="keyword-remove">Typescript</span> <span class="keyword-text"></span>
+                          </span>
+                      </div>
+                      <div class="clearfix"></div>
+                  </div>
+  
+                  <div class="px-2 space-y-2">
+                      <div class="font-semibold text-base"> Playlists </div>
+                      <div> Add your video to one or more playlists. Playlists can help viewers discover your content
+                          faster. <a href="#" class="text-blue-500"> Learn more</a> </div>
+                      <select class="selectpicker">
+                          <option data-icon="icon-material-outline-assignment">Assignment</option>
+                          <option data-icon="icon-material-outline-access-alarm">Alarm</option>
+                          <option data-icon="icon-material-outline-account-circle">Account</option>
+                          <option data-icon="icon-material-outline-cake">Cake</option>
+                      </select>
+                  </div>
+  
+                  <div class="px-2 space-y-2">
+                      <div class="font-semibold text-base"> Visibilty </div>
+                      <div> Manage your videos or your contents who want to see your videos and share with theme across
+                          the website. </div>
+                      <select class="selectpicker">
+                          <option data-icon="uil-bullseye"> Private </option>
+                          <option data-icon="uil-chat-bubble-user">My Following</option>
+                          <option data-icon="uil-layer-group-slash">Unlisted</option>
+                          <option data-icon="uil-globe" selected>Puplic</option>
+                      </select>
+                  </div>
+  
+                  <div class="px-2 space-y-2">
+                      <div class="font-semibold text-base"> Age Restrict </div>
+                      <div> Do you want to restrict your video to an adult audience? </div>
+                      <div> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                          tincidunt utmagna</div>
+                      <div class="flex flex-col">
+                          <div class="radio">
+                              <input id="radio-1" name="radio" type="radio" checked>
+                              <label for="radio-1"><span class="radio-label"></span> Yes, it's made for kids </label>
+                          </div>
+                          <div class="radio">
+                              <input id="radio-2" name="radio" type="radio">
+                              <label for="radio-2"><span class="radio-label"></span>No, it's not made for kids </label>
+                          </div>
+                      </div>
+                  </div>
+  
+              </form>
+  
+          </div>
+  
+          <div class="flex items-center w-full justify-between p-3 border-t">
+  
+              <div class="flex items-center space-x-2">
+  
+                  <ion-icon name="checkmark-circle" class="text-green-600 text-xl"></ion-icon>
+                  <div> You are successfuly uploaded</div>
+  
+              </div>
+  
+              <div class="flex space-x-2">
+                  <a href="#"
+                      class="bg-red-100 flex font-medium h-9 items-center justify-center px-5 rounded-md text-red-600 text-sm">
+                      <svg class="h-5 pr-1 rounded-full text-red-500 w-6 fill-current" id="veiw-more" fill="none"
+                          stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="false"
+                          style="">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z">
+                          </path>
+                      </svg>
+                      Live </a>
+                  <a href="#"
+                      class="bg-blue-600 flex h-9 items-center justify-center rounded-md text-white px-5 font-medium">
+                      Share </a>
+              </div>
+  
+              <a href="#" hidden
+                  class="bg-blue-600 flex h-9 items-center justify-center rounded-lg text-white px-12 font-semibold">
+                  Share </a>
+          </div>
+  
+        </div>
+    </div>
+    
+
+    <!-- open chat box -->
+    <div uk-toggle="target: #offcanvas-chat" class="start-chat">
+        <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+        </svg>
+    </div>
+    
+    <div id="offcanvas-chat" uk-offcanvas="flip: true; overlay: true">
+        <div class="uk-offcanvas-bar bg-white p-0 w-full lg:w-80 shadow-2xl">
+
+
+            <div class="relative pt-5 px-4">
+
+                <h3 class="text-2xl font-bold mb-2"> Chats </h3>
+
+                <div class="absolute right-3 top-4 flex items-center space-x-2">
+
+                    <button class="uk-offcanvas-close  px-2 -mt-1 relative rounded-full inset-0 lg:hidden blcok"
+                        type="button" uk-close></button>
+
+                    <a href="#" uk-toggle="target: #search;animation: uk-animation-slide-top-small">
+                        <ion-icon name="search" class="text-xl hover:bg-gray-100 p-1 rounded-full"></ion-icon>
+                    </a>
+                    <a href="#">
+                        <ion-icon name="settings-outline" class="text-xl hover:bg-gray-100 p-1 rounded-full"></ion-icon>
+                    </a>
+                    <a href="#">
+                        <ion-icon name="ellipsis-vertical" class="text-xl hover:bg-gray-100 p-1 rounded-full"></ion-icon>
+                    </a>
+                    <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden border border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700"  
+                    uk-drop="mode: click;pos: bottom-right;animation: uk-animation-slide-bottom-small; offset:5">
+                        <ul class="space-y-1">
+                          <li> 
+                              <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                 <ion-icon name="checkbox-outline" class="pr-2 text-xl"></ion-icon> Mark all as read
+                              </a> 
+                          </li>
+                          <li> 
+                              <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                <ion-icon name="settings-outline" class="pr-2 text-xl"></ion-icon>  Chat setting 
+                              </a> 
+                          </li>
+                          <li> 
+                              <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                <ion-icon name="notifications-off-outline" class="pr-2 text-lg"></ion-icon>   Disable notifications
+                              </a> 
+                          </li> 
+                          <li> 
+                              <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-100 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                                <ion-icon name="star-outline"  class="pr-2 text-xl"></ion-icon>  Create a group chat 
+                              </a> 
+                          </li>
+                        </ul>
+                    </div>
+                              
+
+                </div>
+
+
+            </div>
+
+            <div class="absolute bg-white z-10 w-full -mt-5 lg:-mt-2 transform translate-y-1.5 py-2 border-b items-center flex"
+                id="search" hidden>
+                <input type="text" placeholder="Search.." class="flex-1">
+                <ion-icon name="close-outline" class="text-2xl hover:bg-gray-100 p-1 rounded-full mr-4 cursor-pointer"
+                    uk-toggle="target: #search;animation: uk-animation-slide-top-small"></ion-icon> 
+            </div>
+
+            <nav class="responsive-nav border-b extanded mb-2 -mt-2">
+                <ul uk-switcher="connect: #chats-tab; animation: uk-animation-fade">
+                    <li class="uk-active"><a class="active" href="#0"> Friends </a></li>
+                    <li><a href="#0">Groups <span> 10 </span> </a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-list px-2 uk-switcher" id="chats-tab">
+
+                <div class="p-1">
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-7.jpg" alt="">
+                        </div>
+                        <div class="contact-username"> Alex Dolgove</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-8.jpg" alt="">
+                            <span class="user_status status_online"></span>
+                        </div>
+                        <div class="contact-username"> Dennis Han</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                            <span class="user_status"></span>
+                        </div>
+                        <div class="contact-username"> Erica Jones</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                        </div>
+                        <div class="contact-username">Stella Johnson</div>
+                    </a>
+                    
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-5.jpg" alt="">
+                        </div>
+                        <div class="contact-username">Adrian Mohani </div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-6.jpg" alt="">
+                        </div>
+                        <div class="contact-username"> Jonathan Madano</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                            <span class="user_status"></span>
+                        </div>
+                        <div class="contact-username"> Erica Jones</div>
+                    </a>
+                    <a href="chats-friend.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                            <span class="user_status status_online"></span>
+                        </div>
+                        <div class="contact-username"> Dennis Han</div>
+                    </a>
+                   
+
+                </div>
+               <div class="p-1">
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-7.jpg" alt="">
+                        </div>
+                        <div class="contact-username"> Alex Dolgove</div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-8.jpg" alt="">
+                            <span class="user_status status_online"></span>
+                        </div>
+                        <div class="contact-username"> Dennis Han</div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                            <span class="user_status"></span>
+                        </div>
+                        <div class="contact-username"> Erica Jones</div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                        </div>
+                        <div class="contact-username">Stella Johnson</div>
+                    </a>
+                    
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-5.jpg" alt="">
+                        </div>
+                        <div class="contact-username">Adrian Mohani </div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-6.jpg" alt="">
+                        </div>
+                        <div class="contact-username"> Jonathan Madano</div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                            <span class="user_status"></span>
+                        </div>
+                        <div class="contact-username"> Erica Jones</div>
+                    </a>
+                    <a href="chats-group.html">
+                        <div class="contact-avatar">
+                            <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                            <span class="user_status status_online"></span>
+                        </div>
+                        <div class="contact-username"> Dennis Han</div>
+                    </a>
+                   
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

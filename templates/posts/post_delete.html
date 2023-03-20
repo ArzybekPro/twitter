@@ -1,0 +1,50 @@
+{% extends 'homepage.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        input , .bootstrap-select.btn-group button{
+            background-color: #f3f4f6  !important;
+            height: 44px  !important;
+            box-shadow: none  !important; 
+        }
+    </style>
+
+
+        
+            <!-- Content-->
+            <div>
+                <div class="lg:p-12 max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
+                    <form method = 'POST' enctype="multipart/form-data" class="lg:p-10 p-6 space-y-3 relative bg-white shadow-xl rounded-md">
+                        {% csrf_token %}
+                        <h1 class="lg:text-2xl text-xl font-semibold mb-6">Are you sure with your ?<h1>
+
+                        <div class="grid lg:grid-cols-1 gap-3">
+                         
+                        
+                <div style='display:flex' >
+                    <div style="margin-right: 20px;" class="flex space-x-2">
+                        <button name="post_delete" type="submit" class="bg-red-600 flex h-9 items-center justify-center rounded-md text-white px-5 font-medium">
+                          удалить  </button>    
+                    </div>
+                      
+                    <div class="flex space-x-2">
+                        <a href="{% url 'index'%}" type="submit" class="bg-blue-600 flex h-9 items-center justify-center rounded-md text-white px-5 font-medium">
+                          не удалять  </a>    
+                    </div>
+                </div>      
+                    </form>
+
+
+
+                </div>
+            </div>
+            
+            <!-- Footer -->
+    
+        
+    
+        </div>
+
+        
+     
+  {%endblock%}
