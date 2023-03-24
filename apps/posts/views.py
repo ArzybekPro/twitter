@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from apps.posts.models import Post,Comment
+from apps.posts.models import Post,Comment,Task
 from apps.users.models import User
 from apps.settings.models import Settings
 from django.db.models import Q
@@ -81,3 +81,12 @@ def search(request):
     }
     return render(request, 'users/search.html', context)
 
+def todolist(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        desk = request.POST['desk']
+        ins = Task(task_title = title , desk = desk)
+    return render(request,'posts/todolist.html')
+
+def aboutTodo(request):
+    return render(request,'posts/about.html')
