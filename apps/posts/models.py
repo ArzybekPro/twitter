@@ -157,16 +157,21 @@ class Message(models.Model):
 
 
 class Task(models.Model):
-    task_title = models.CharField(
+    Priority = (('L', 'Low'),
+                ('M', 'Medium'),
+                ('H', 'High'))
+    task_name = models.CharField(
         max_length=50
     )
-    task_desk = models.TextField(
-        
+    du_date = models.DateTimeField(
+        default=None, null=True ,blank = True
     )
     
-    time = models.DateTimeField(
-        auto_now_add=True
+    complated = models.BooleanField(
+        default=False
     )
+    priority = models.CharField(max_length =1,choices=Priority , default = 'L')
+    
     def __str__(self):
         return self.task_title
     
